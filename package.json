@@ -1,0 +1,31 @@
+{
+  "name": "runamecase",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "https://github.com/yerofey/runamecase",
+  "funding": "https://www.patreon.com/yerofey",
+  "author": {
+    "name": "Yerofey S.",
+    "email": "pm@yerofey.dev",
+    "url": "https://yerofey.dev/"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "ava"
+  },
+  "files": {
+    "index.js"
+  },
+  "keywords": [
+    "russian",
+    "name",
+    "case"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^3.5.2"
+  }
+}
