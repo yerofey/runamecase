@@ -14,9 +14,11 @@ $ yarn add runamecase
 ```js
 const runamecase = require('runamecase');
 
-runamecase('Ерофей', 3);
-// => 'Ерофея'
+runamecase('Ерофей', 3); // => 'Ерофея'
 ```
+## TODO
+- [ ] More tests
+- [ ] Use case by its name, not only by index
 
 # Author
 [Yerofey S.](https://github.com/yerofey)
