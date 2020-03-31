@@ -16,9 +16,9 @@
   "scripts": {
     "test": "ava"
   },
-  "files": {
+  "files": [
     "index.js"
-  },
+  ],
   "keywords": [
     "russian",
     "name",
