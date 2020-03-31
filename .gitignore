@@ -1,3 +1,4 @@
 node_modules/
 script.js
+yarn-error.log
 yarn.lock
