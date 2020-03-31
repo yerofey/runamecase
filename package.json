@@ -1,6 +1,6 @@
 {
   "name": "runamecase",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A package to convert russian names from nominative to any other case",
   "license": "MIT",
   "repository": "https://github.com/yerofey/runamecase",
