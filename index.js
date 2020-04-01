@@ -19,6 +19,12 @@ module.exports = (name, namecase) => {
 const getNameInCase = (name, namecase) => {
     // TODO: last N symbols to lowercase
 
+    const name_lower = name.toLowerCase();
+
+    if (typeof namecase === 'string') { // TODO: check if exists
+        namecase = cases[namecase];
+    }
+
     const letters = [
         [
             'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я',
@@ -31,119 +37,329 @@ const getNameInCase = (name, namecase) => {
         ]
     ];
 
-    let last_one = name[name.length - 1];
-    let last_two = name[name.length - 2] + last_one;
-    let cut_symbols = 0;
-    let ends;
+    const specific_names = {
+        'гия': {
+            ends: [
+                'и',
+                'е',
+                'ю',
+                'ей',
+                'е',  
+            ],
+            cut: 1
+        },
+        'данко': {
+            skip: true
+        },
+        'илия': {
+            ends: [
+                'и',
+                'е',
+                'ю',
+                'ей',
+                'и',
+            ],
+            cut: 1
+        },
+        'лия': {
+            ends: [
+                'и',
+                'и',
+                'ю',
+                'ей',
+                'и', 
+            ],
+            cut: 1
+        },
+        'мария': {
+            ends: [
+                'и',
+                'и',
+                'ю',
+                'ей',
+                'и',
+            ],
+            cut: 1
+        },
+        'николя': {
+            skip: true
+        },
+        'юлия': {
+            ends: [
+                'и',
+                'и',
+                'ю',
+                'ей',
+                'и',
+            ],
+            cut: 1
+        }
+    };
+
+    let found = false;
+    let cut = 0;
+    let ends = false;
+    let skip = false;
+
+    if (specific_names.hasOwnProperty(name_lower)) {
+        let data = specific_names[name_lower];
+        cut = data.cut;
+        ends = data.ends;
+        found = true;
+
+        if (data.hasOwnProperty('skip')) {
+            skip = data.skip;
+        }
+    }
+
+    if (skip === true) {
+        return name;
+    }
 
     if (namecase == 0) {
         namecase = 1;
     }
 
-    switch (last_one) {
-        case 'а':
-            ends = [
-                'и',
-                'е',
-                'у',
-                'ой',
-                'е',
-            ];
-            cut_symbols = 1;
-            break;
+    if (found === false) {
+        switch (last_n(name, 3)) {
+            case 'еля':
+                ends = [
+                    'и',
+                    'е',
+                    'ю',
+                    'ей',
+                    'е',
+                ];
+                cut = 1;
+                break;
+    
+            case 'енц':
+                ends = [
+                    'а',
+                    'у',
+                    'а',
+                    'ем',
+                    'е',
+                ];
+                cut = 0;
+                break;
+    
+            case 'лла':
+                ends = [
+                    'ы',
+                    'е',
+                    'у',
+                    'ой',
+                    'е',
+                ];
+                cut = 1;
+                break;
+    
+            case 'овь': // "Любовь"
+                ends = [
+                    'и',
+                    'и',
+                    'ь',
+                    'ью',
+                    'и',
+                ];
+                cut = 1;
+                break;
+        }
 
-        case 'ь':
-            ends = [
-                'я',
-				'ю',
-				'я',
-				'ем',
-				'е',
-            ];
-            cut_symbols = 1;
-            break;
+        if (ends === false) {
+            switch (last_n(name, 2)) {
+                case 'ан':
+                    ends = [
+                        'а',
+                        'у',
+                        'а',
+                        'ом',
+                        'е',
+                    ];
+                    cut = 0;
+                    break;
+        
+                case 'вь':
+                    ends = [
+                        'ь',
+                        'и',
+                        'ь',
+                        'ью',
+                        'и',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'да':
+                    ends = [
+                        'ы',
+                        'е',
+                        'у',
+                        'ой',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ев':
+                    ends = [
+                        'ва',
+                        'ву',
+                        'ва',
+                        'вом',
+                        'ве',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ей':
+                    ends = [
+                        'я',
+                        'ю',
+                        'я',
+                        'ем',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'иа':
+                    ends = [
+                        'ю',
+                        'е',
+                        'ю',
+                        'ей',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
 
-        case 'я':
-            ends = [
-                'и',
-				'е',
-				'ю',
-				'ей',
-				'е',
-            ];
-            cut_symbols = 1;
-            break;
+                case 'ии':
+                    ends = [
+                        'и',
+                        'е',
+                        'ю',
+                        'ей',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+    
+                case 'ия':
+                    ends = [
+                        'и',
+                        'е',
+                        'ю',
+                        'ей',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ий':
+                    ends = [
+                        'я',
+                        'ю',
+                        'я',
+                        'ем',
+                        'и',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ло':
+                    ends = [
+                        'ы',
+                        'е',
+                        'у',
+                        'ы',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'та':
+                    ends = [
+                        'ы',
+                        'е',
+                        'у',
+                        'ой',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ья':
+                    ends = [
+                        'и',
+                        'е',
+                        'ю',
+                        'ёй',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+            }
+        }
+
+        if (ends === false) {
+            switch (last_n(name, 1)) {
+                case 'а':
+                    ends = [
+                        'и',
+                        'е',
+                        'у',
+                        'ой',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'ь':
+                    ends = [
+                        'я',
+                        'ю',
+                        'я',
+                        'ем',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+        
+                case 'я':
+                    ends = [
+                        'и',
+                        'е',
+                        'ю',
+                        'ей',
+                        'е',
+                    ];
+                    cut = 1;
+                    break;
+            }
+        }
+    
+        if (ends === false) {
+            if (in_array(last_n(name, 1), letters[1], true)) {
+                ends = [
+                    'а',
+                    'у',
+                    'а',
+                    'ом',
+                    'е',
+                ];
+                cut = 0;
+            }
+        }
     }
 
-    switch (last_two) {
-        case 'ан':
-            ends = [
-                'а',
-				'у',
-				'а',
-				'ом',
-				'е',
-            ];
-            cut_symbols = 0;
-            break;
-
-        case 'вь':
-            ends = [
-                'вь',
-				'ви',
-				'вь',
-				'вью',
-				'ви',
-            ];
-            cut_symbols = 2;
-            break;
-
-        case 'ев':
-            ends = [
-                'ьва',
-				'ьву',
-				'ьва',
-				'ьвом',
-				'ьве',
-            ];
-            cut_symbols = 2;
-            break;
-
-        case 'ей':
-            ends = [
-                'ея',
-				'ею',
-				'ея',
-				'еем',
-				'ее',
-            ];
-            cut_symbols = 2;
-            break;
-
-        case 'иа':
-            ends = [
-                'ию',
-				'ие',
-				'ию',
-				'ией',
-				'ие',
-            ];
-            cut_symbols = 2;
-            break;
+    let new_name = name.substring(0, name.length - cut);
+    if (ends !== false) {
+        new_name += ends[namecase - 1];
     }
 
-    if (cut_symbols == 0 && in_array(last_one, letters[1], true)) {
-        ends = [
-            'а',
-            'у',
-            'а',
-            'ом',
-            'е',
-        ];
-        cut_symbols = 0;
-    }
-
-    return name.substring(0, name.length - cut_symbols) + ends[namecase - 1];
+    return new_name;
 }
 
 const in_array = (needle, haystack, strict) => {
@@ -154,4 +370,8 @@ const in_array = (needle, haystack, strict) => {
     }
     
     return false;
+}
+
+const last_n = (string, slice) => {
+    return string.substr(string.length - slice);
 }
