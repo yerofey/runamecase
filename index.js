@@ -123,13 +123,13 @@ const getNameInCase = (name, namecase) => {
 
         case 'иа':
             ends = [
-                'ю',
-				'е',
-				'ю',
-				'ей',
-				'е',
+                'ию',
+				'ие',
+				'ию',
+				'ией',
+				'ие',
             ];
-            cut_symbols = 1;
+            cut_symbols = 2;
             break;
     }
 
