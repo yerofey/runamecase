@@ -17,11 +17,10 @@ module.exports = (name, namecase) => {
 }
 
 const getNameInCase = (name, namecase) => {
-    // TODO: last N symbols to lowercase
-
     const name_lower = name.toLowerCase();
 
-    if (typeof namecase === 'string') { // TODO: check if exists
+    if (typeof namecase === 'string') {
+        // TODO: check if exists
         namecase = cases[namecase];
     }
 
