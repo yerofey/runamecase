@@ -1,4 +1,5 @@
 node_modules/
+index-dev.js
 script.js
 yarn-error.log
 yarn.lock
