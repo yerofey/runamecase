@@ -23,10 +23,5 @@ runamecase('Ерофей', 3); // => 'Ерофея'
 ## Author
 [Yerofey S.](https://github.com/yerofey)
 
-<<<<<<< HEAD
 ## License
 This library licensed under [MIT](https://github.com/yerofey/runamecase/blob/master/LICENSE).
-=======
-# License
-This library licensed under [MIT](https://github.com/yerofey/runamecase/blob/master/LICENSE).
->>>>>>> a231ce59ca055cf67bb3cc7e438f6062a5bb029a
