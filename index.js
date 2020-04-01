@@ -10,7 +10,7 @@
 
 module.exports = (name, namecase) => {
     if (typeof name !== 'string') {
-		throw new TypeError(`Expected a string, got \`${typeof name}\``);
+	    throw new TypeError(`Expected a string, got \`${typeof name}\``);
     }
     
     return getNameInCase(name, namecase);
@@ -40,7 +40,6 @@ const getNameInCase = (name, namecase) => {
         namecase = 1;
     }
 
-    // TODO: char codes
     switch (last_one) {
         case 'а':
             ends = [
@@ -147,7 +146,6 @@ const getNameInCase = (name, namecase) => {
     return name.substring(0, name.length - cut_symbols) + ends[namecase - 1];
 }
 
-// const getNameInCase = (name, namecase) => {
 const in_array = (needle, haystack, strict) => {
     for (let key in haystack) {
         if ((strict && haystack[key] === needle) || (!strict && haystack[key] == needle)) {
