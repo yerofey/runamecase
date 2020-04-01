@@ -18,8 +18,8 @@ runamecase('Ерофей', 3);
 // => 'Ерофея'
 ```
 
-# Author
+## Author
 [Yerofey S.](https://github.com/yerofey)
 
-# License
+## License
 This library licensed under [MIT](https://github.com/yerofey/runamecase/blob/master/LICENSE).
