@@ -10,7 +10,7 @@
 
 module.exports = (name, namecase) => {
     if (typeof name !== 'string') {
-	    throw new TypeError(`Expected a string, got \`${typeof name}\``);
+	    throw new TypeError(`Expected a string, got "${typeof name}"`);
     }
     
     return getNameInCase(name, namecase);
@@ -20,8 +20,20 @@ const getNameInCase = (name, namecase) => {
     const name_lower = name.toLowerCase();
 
     if (typeof namecase === 'string') {
-        // TODO: check if exists
-        namecase = cases[namecase];
+        const cases = {
+            'nominative': 0,
+            'genitive': 1,
+            'dative': 2,
+            'accusative': 3,
+            'instrumental': 4,
+            'prepositional': 5,
+        };
+
+        if (cases.hasOwnProperty(namecase)) {
+            namecase = cases[namecase];
+        } else {
+            throw new Error(`Case with key "${name}" not found`);
+        }
     }
 
     const letters = [
