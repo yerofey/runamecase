@@ -18,8 +18,8 @@ runamecase('Ерофей', 3); // => 'Ерофея'
 ```
 ## TODO
 - [ ] More tests
-- [ ] Use case by its name, not only by index
-
+- [ ] More rules
+ 
 ## Author
 [Yerofey S.](https://github.com/yerofey)
 
