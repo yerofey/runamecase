@@ -1,5 +1,7 @@
 # runamecase
-A package to convert russian names from nominative to any other case.
+A package to convert russian names from nominative to any other case.  
+
+**Attention: not ready for production!**
 
 ## Install
 ```
@@ -19,6 +21,7 @@ runamecase('Ерофей', 3); // => 'Ерофея'
 ## TODO
 - [ ] More tests
 - [ ] More rules
+- [ ] Production-ready release
  
 ## Author
 [Yerofey S.](https://github.com/yerofey)
