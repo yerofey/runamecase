@@ -5,11 +5,11 @@ A package to convert russian names from nominative to any other case.
 
 ## Install
 ```
-$ npm i runamecase
-```
-OR
-```
 $ yarn add runamecase
+```
+or
+```
+$ npm i runamecase
 ```
 
 ## Usage
